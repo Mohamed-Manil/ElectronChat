@@ -4,7 +4,8 @@
   "description": "simple chat app with react and electron",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "watch": "webpack --config ./bundler/webpack.dev.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,21 @@
   "author": "HADDADI Mohamed Manil",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.15.8",
     "electron": "^15.2.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.43.2",
+    "sass-loader": "^12.2.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.59.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-merge": "^5.8.0"
   }
 }
