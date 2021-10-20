@@ -1,0 +1,24 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "simple chat app with react and electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "keywords": [
+    "electron",
+    "react",
+    "firebase",
+    "webpack"
+  ],
+  "author": "HADDADI Mohamed Manil",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^15.2.0"
+  }
+}
