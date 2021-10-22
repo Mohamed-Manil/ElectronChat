@@ -1,4 +1,6 @@
 const path = require("path");
+const TailWindCss = require("tailwindcss");
+const AutoPrefexier = require("autoprefixer");
 
 module.exports = {
   watch: true,
@@ -32,11 +34,31 @@ module.exports = {
         test: [/\.s[ac]ss$/i, /\.css$/i],
         use: [
           // Creates `style` nodes from JS strings
+          {
+            loader: "style-loader",
+          },
+          // Translates CSS into CommonJS
+          {
+            loader: "css-loader",
+          },
+          // Compiles Sass to CSS
+          {
+            loader: "sass-loader",
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [TailWindCss, AutoPrefexier],
+              },
+            },
+          },
+          /*  // Creates `style` nodes from JS strings
           "style-loader",
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
-          "sass-loader",
+          "sass-loader", */
         ],
       },
     ],
