@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "logoFont";
+  font-weight: 400;
+  src: url(../fonts/PermanentMarker-Regular.ttf);
+}
