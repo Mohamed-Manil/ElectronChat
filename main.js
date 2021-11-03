@@ -7,6 +7,7 @@ function createWindow() {
   const win = new BrowserWindow({
     height: 800,
     width: 800,
+    frame: false,
     webPreferences: {
       nodeIntegration: false,
       preload: path.join(__dirname, "preload.js"),
@@ -26,6 +27,22 @@ function createWindow() {
 
   ipcMain.handle("dark-mode:system", () => {
     nativeTheme.themeSource = "system";
+  });
+
+  /**
+   * window overlay buttons
+   */
+  // close app
+  ipcMain.on("closeApp", () => {
+    win.close();
+  });
+  // minimise app
+  ipcMain.on("minimiseApp", () => {
+    win.minimize();
+  });
+  // maximise or restaure app
+  ipcMain.on("maximizeRestaureApp", () => {
+    win.isMaximized() ? win.restore() : win.maximize();
   });
 
   isDev && win.webContents.openDevTools();
