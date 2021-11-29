@@ -7,3 +7,30 @@
   font-weight: 400;
   src: url(../fonts/PermanentMarker-Regular.ttf);
 }
+
+@font-face {
+  font-family: "titleFont";
+  font-weight: 700;
+  src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
+}
+
+.tippy-box[data-theme~="darkTippy"] {
+  background-color: #19191c;
+  color: #f9fafb;
+}
+.tippy-box[data-theme~="darkTippy"][data-placement^="top"]
+  > .tippy-arrow::before {
+  border-top-color: #19191c;
+}
+.tippy-box[data-theme~="darkTippy"][data-placement^="bottom"]
+  > .tippy-arrow::before {
+  border-bottom-color: #19191c;
+}
+.tippy-box[data-theme~="darkTippy"][data-placement^="left"]
+  > .tippy-arrow::before {
+  border-left-color: #19191c;
+}
+.tippy-box[data-theme~="darkTippy"][data-placement^="right"]
+  > .tippy-arrow::before {
+  border-right-color: #19191c;
+}

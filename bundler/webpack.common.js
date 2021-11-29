@@ -62,6 +62,10 @@ module.exports = {
           "sass-loader", */
         ],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {
@@ -70,5 +74,6 @@ module.exports = {
   output: {
     filename: "app.js",
     path: path.resolve(__dirname, "../build", "js"),
+    clean: true,
   },
 };
