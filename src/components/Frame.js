@@ -3,7 +3,7 @@ import React from "react";
 const Frame = () => {
   return (
     <div
-      className="bg-blue-dark dark:bg-gray-darkest w-full h-6 flex flex-row justify-between"
+      className="bg-blue-dark dark:bg-gray-darkest w-full h-6 flex-shrink-0 flex flex-row justify-between"
       style={{ WebkitAppRegion: "drag" }}
     >
       <div

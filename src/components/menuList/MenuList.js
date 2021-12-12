@@ -1,16 +1,17 @@
 import React from "react";
 import SearchUser from "./SearchUser";
-import UserItem from "./UserItem";
-UserItem;
+import ListUsers from "./ListUsers";
+import MiniControll from "./MiniControll";
 
 const MenuList = () => {
   return (
-    <div className="flex flex-col w-60 bg-gray-darkestV rounded-tl-lg">
-      <SearchUser />
-      <hr className="w-full border-gray-darkest mx-auto mt-3" />
-      <UserItem />
-      <UserItem />
-      <UserItem />
+    <div className="flex-shrink-0 flex flex-col w-60">
+      <div className="flex flex-col bg-gray-darkestV w-full">
+        <SearchUser />
+        <hr className="w-full border-gray-darkest rounded-tl-lg mx-auto mt-3 flex-shrink-0" />
+      </div>
+      <ListUsers />
+      <MiniControll />
     </div>
   );
 };

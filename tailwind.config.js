@@ -12,6 +12,7 @@ module.exports = {
         white: "#FFFFFF",
         gray: {
           darkest: "#202225",
+          darkestIV: "#242629",
           darkestV: "#292b2f",
           dark: "#2f3136",
           default: "#36393f",
@@ -27,6 +28,13 @@ module.exports = {
       },
       gridTemplateColumns: {
         gidRes: "repeat(auto-fill, minmax(288px, 1fr))",
+        gridMain: "80px 240px auto",
+      },
+      gridTemplateRows: {
+        gridFrame: "24px auto",
+      },
+      scale: {
+        101: "1.01",
       },
     },
   },
