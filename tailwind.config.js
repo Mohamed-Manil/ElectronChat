@@ -2,6 +2,7 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   darkMode: "media",
+  mode: "jit",
   theme: {
     extend: {
       fontFamily: {
@@ -45,5 +46,10 @@ module.exports = {
     },
   },
   plugins: [require("tailwind-scrollbar")],
-  purge: ["./src/components/**/*.js"],
+  purge: [
+    "./src/components/**/*.js",
+    "./src/components/*js",
+    "./src/js/App.js",
+    "./src/views/*.js",
+  ],
 };
