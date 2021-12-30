@@ -30,6 +30,7 @@ module.exports = {
       gridTemplateColumns: {
         gidRes: "repeat(auto-fill, minmax(288px, 1fr))",
         gridMain: "80px 240px auto",
+        gridMessage: "min-content min-content",
       },
       gridTemplateRows: {
         gridFrame: "24px auto",

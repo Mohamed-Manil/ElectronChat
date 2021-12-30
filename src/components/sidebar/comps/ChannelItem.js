@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Item = ({ idItem } = {}) => {
   const dummyImageUrl = "https://via.placeholder.com/150";
+  const navigate = useNavigate();
   return (
     <>
       <input
@@ -9,6 +11,7 @@ const Item = ({ idItem } = {}) => {
         name="navItem"
         id={idItem}
         className="absolute -left-full"
+        onClick={() => navigate("/chat")}
       />
       <label htmlFor={idItem}>
         <div className="flex relative flex-col h-full">

@@ -1,12 +1,13 @@
 import React from "react";
 import Theme from "../components/settings/Theme";
+import Notification from "../components/settings/Notification";
 import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative">
+    <div className="relative text-gray-50">
       <div
         className="absolute right-10 top-10 cursor-pointer flex flex-col content-center"
         onClick={() => {
@@ -30,9 +31,10 @@ const Settings = () => {
         <span className="text-center text-gray-400">ESC</span>
       </div>
 
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-gray-500 w-11/12">
-        <h1>Adjust application settings</h1>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-gray-500 w-11/12 p-4">
+        <h1 className="text-2xl mb-2">Adjust application settings</h1>
         <Theme />
+        <Notification />
       </div>
     </div>
   );

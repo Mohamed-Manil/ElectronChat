@@ -1,15 +1,14 @@
 import React from "react";
-import Sidebar from "../components/sidebar/Sidebar";
-import MenuList from "../components/menuList/MenuList";
+
+import HomeMenuList from "../components/menuList/HomeMenuList";
 import ChannelsDisplay from "../components/Channels/ChannelsDisplay";
 
 const HomeView = () => {
   return (
-    <div className="grid grid-cols-gridMain overflow-hidden">
-      <Sidebar />
-      <MenuList />
+    <>
+      <HomeMenuList />
       <ChannelsDisplay />
-    </div>
+    </>
   );
 };
 

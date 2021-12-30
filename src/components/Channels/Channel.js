@@ -2,7 +2,7 @@ import React from "react";
 
 const Channel = () => {
   return (
-    <div className="flex flex-col w-72 h-80 rounded-lg bg-gray-darkest transition ease-in-out duration-500 transform  hover:scale-101 hover:shadow-lg">
+    <div className="flex flex-col w-72 h-80 rounded-lg bg-gray-darkest transition ease-in-out duration-500 transform  hover:scale-101 hover:shadow-lg cursor-pointer">
       <div className="w-full relative" style={{ height: "137.6px" }}>
         <img
           src="https://via.placeholder.com/150"
