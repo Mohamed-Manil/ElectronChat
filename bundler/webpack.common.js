@@ -1,6 +1,7 @@
 const path = require("path");
 const TailWindCss = require("tailwindcss");
 const AutoPrefexier = require("autoprefixer");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   watch: true,
@@ -68,6 +69,7 @@ module.exports = {
       },
     ],
   },
+  plugins: [new Dotenv()],
   resolve: {
     extensions: [".js"],
   },
