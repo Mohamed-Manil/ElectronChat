@@ -10,8 +10,8 @@ const Item = ({ idItem } = {}) => {
         type="radio"
         name="navItem"
         id={idItem}
-        className="absolute -left-full"
-        onClick={() => navigate("/chat")}
+        className="absolute -left-full checked:bg-red"
+        onClick={() => navigate("/chat/1")}
       />
       <label htmlFor={idItem}>
         <div className="flex relative flex-col h-full">

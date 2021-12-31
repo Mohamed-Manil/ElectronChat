@@ -2,6 +2,7 @@ import React from "react";
 
 import MainLayout from "../views/MainLayout";
 import FrameLayout from "../views/FrameLayout";
+
 import Home from "../views/Home";
 import Chat from "../views/Chat";
 import Settings from "../views/Settings";
@@ -17,7 +18,7 @@ const App = () => {
         <Route element={<FrameLayout />}>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat/:id" element={<Chat />} />
           </Route>
           <Route path="/settings" element={<Settings />} />
           <Route path="/login" element={<Login />} />
