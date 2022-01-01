@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Provider } from "react-redux";
+
 import MainLayout from "../views/MainLayout";
 import FrameLayout from "../views/FrameLayout";
 
@@ -9,23 +11,28 @@ import Settings from "../views/Settings";
 import Login from "../views/Login";
 import Register from "../views/Register";
 
+import configureStore from "../store";
+
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
+  const store = configureStore();
   return (
-    <Router>
-      <Routes>
-        <Route element={<FrameLayout />}>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/chat/:id" element={<Chat />} />
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route element={<FrameLayout />}>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/chat/:id" element={<Chat />} />
+            </Route>
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Route>
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </Provider>
   );
 };
 
