@@ -8,8 +8,7 @@ import FrameLayout from "../views/FrameLayout";
 import Home from "../views/Home";
 import Chat from "../views/Chat";
 import Settings from "../views/Settings";
-import Login from "../views/Login";
-import Register from "../views/Register";
+import Welcome from "../views/Welcome";
 
 import configureStore from "../store";
 
@@ -23,12 +22,11 @@ const App = () => {
         <Routes>
           <Route element={<FrameLayout />}>
             <Route element={<MainLayout />}>
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/chat/:id" element={<Chat />} />
             </Route>
             <Route path="/settings" element={<Settings />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Welcome />} />
           </Route>
         </Routes>
       </Router>
