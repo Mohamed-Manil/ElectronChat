@@ -1,9 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../actions/auth";
 
 const RegisterForm = ({ toggle }) => {
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    dispatch(loginUser(data));
+  };
   return (
-    <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4">
+    <form
+      className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <h1 className="text-center text-gray-50 text-xl">Welcome here !</h1>
       <h3 className="text-center text-gray-400">
         Login and chat with other people!
@@ -21,6 +31,7 @@ const RegisterForm = ({ toggle }) => {
             id="email"
             type="email"
             placeholder="Email"
+            {...register("email")}
           />
         </div>
         <div className="mb-4">
@@ -35,16 +46,17 @@ const RegisterForm = ({ toggle }) => {
             id="password"
             type="password"
             placeholder="Password"
+            {...register("password")}
           />
         </div>
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
-            type="button"
+            type="submit"
           >
             Sign In
           </button>
-          <p className="text-white">
+          <div className="text-white">
             You dont have an account ?
             <p
               className="inline-block align-baseline font-bold text-sm hover:text-blue-dark ml-1 hover:cursor-pointer"
@@ -54,10 +66,10 @@ const RegisterForm = ({ toggle }) => {
             >
               Register
             </p>
-          </p>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

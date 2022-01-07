@@ -1,17 +1,26 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
-import { useNavigate } from "react-router-dom";
+import LoadingView from "../components/shared/LoadingView";
+import { Navigate } from "react-router-dom";
 
 const Welcome = () => {
-  const navigate = useNavigate();
-  const [isLoginView, setIsLogin] = useState(false);
+  const [isLoginView, setIsLogin] = useState(true);
+  const user = useSelector(({ auth }) => auth.user);
+  const isChecking = useSelector(({ auth }) => auth.isChecking);
   const toggleLoginRegister = () => {
     setIsLogin(!isLoginView);
   };
+  if (isChecking) {
+    return <LoadingView message={"Just one moment please."} />;
+  }
+  if (user) {
+    return <Navigate to="/home" />;
+  }
   return (
     <div className="relative">
-      <div
+      {/* <div
         className="absolute right-10 top-10 cursor-pointer flex flex-col content-center"
         onClick={() => {
           navigate(-1);
@@ -32,8 +41,9 @@ const Welcome = () => {
           </svg>
         </div>
         <span className="text-center text-gray-400">ESC</span>
-      </div>
+      </div> */}
       {/* replace here */}
+      <h3 onClick={() => console.log(isChecking, user)}>click me</h3>
       {isLoginView ? (
         <LoginForm toggle={toggleLoginRegister} />
       ) : (
