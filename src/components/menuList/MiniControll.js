@@ -1,18 +1,23 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import UserDropDown from "./UserDropDown";
 import { Link, useNavigate } from "react-router-dom";
 
 const MiniControll = () => {
   const navigate = useNavigate();
+  const user = useSelector(({ auth }) => auth.user);
   return (
     <div className="flex flex-row justify-between items-center p-5 w-full h-16 flex-shrink-0 bg-gray-darkestIV">
-      {/* <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => navigate("/")}
-      >
-        Login
-      </button> */}
-      <UserDropDown />
+      {user ? (
+        <UserDropDown user={user} />
+      ) : (
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => navigate("/")}
+        >
+          Login
+        </button>
+      )}
       <Link to={"/settings"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

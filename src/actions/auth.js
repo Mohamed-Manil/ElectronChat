@@ -8,19 +8,28 @@ import {
   AUTH_LOGIN_SUCCESS,
   AUTH_REGISTER_INIT,
   AUTH_LOGIN_INIT,
+  AUTH_LOGIN_ERROR,
+  AUTH_REGISTER_ERROR,
 } from "../types/authTypes";
 
 export const registerUser = (formData) => async (dispatch) => {
-  dispatch({ type: AUTH_REGISTER_INIT });
-  const user = await api.register(formData);
-  dispatch({ type: AUTH_REGISTER_SUCCESS });
-  return user;
+  try {
+    dispatch({ type: AUTH_REGISTER_INIT });
+    const user = await api.register(formData);
+    dispatch({ type: AUTH_REGISTER_SUCCESS, user });
+  } catch (error) {
+    dispatch({ type: AUTH_REGISTER_ERROR, error });
+  }
 };
 
 export const loginUser = (formData) => async (dispatch) => {
-  dispatch({ type: AUTH_LOGIN_INIT });
-  await api.login(formData);
-  dispatch({ type: AUTH_LOGIN_SUCCESS });
+  try {
+    dispatch({ type: AUTH_LOGIN_INIT });
+    const user = await api.login(formData);
+    dispatch({ type: AUTH_LOGIN_SUCCESS, user });
+  } catch (error) {
+    dispatch({ type: AUTH_LOGIN_ERROR, error });
+  }
 };
 
 export const logout = () => async (dispatch) => {
@@ -30,12 +39,12 @@ export const logout = () => async (dispatch) => {
 
 export const listenToAuthChanges = () => (dispatch) => {
   dispatch({ type: AUTH_ON_INIT });
-  return api.onAuthStateChanges((authUser) => {
+  return api.onAuthStateChanges(async (authUser) => {
     if (authUser) {
-      dispatch({ type: AUTH_ON_SUCCESS, user: authUser });
+      const userProfile = await api.getUserProfile(authUser.uid);
+      dispatch({ type: AUTH_ON_SUCCESS, user: userProfile });
     } else {
       dispatch({ type: AUTH_ON_ERROR });
-      console.log("we are not authentificated");
     }
   });
 };

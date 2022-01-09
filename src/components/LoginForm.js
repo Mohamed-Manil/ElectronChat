@@ -1,14 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../actions/auth";
+import LoadingView from "../components/shared/LoadingView";
 
 const RegisterForm = ({ toggle }) => {
   const dispatch = useDispatch();
+  const error = useSelector(({ auth }) => auth.login.error);
+  const isChecking = useSelector(({ auth }) => auth.login.isChecking);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     dispatch(loginUser(data));
   };
+  if (isChecking) {
+    return <LoadingView message={"Just one moment please."} />;
+  }
   return (
     <form
       className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4"
@@ -49,6 +55,25 @@ const RegisterForm = ({ toggle }) => {
             {...register("password")}
           />
         </div>
+        {error && (
+          <div className=" p-2 mb-4 rounded-lg border-2 border-pink-500 flex flex-row justify-between">
+            <span className="text-pink-500">{error.message}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-pink-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+        )}
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
