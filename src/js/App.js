@@ -22,6 +22,7 @@ import {
 } from "react-router-dom";
 
 import { listenToAuthChanges } from "../actions/auth";
+import { listentToConnection } from "../actions/app";
 
 const AuthRoute = ({ children }) => {
   const user = useSelector(({ auth }) => auth.user);
@@ -31,9 +32,22 @@ const AuthRoute = ({ children }) => {
 const ChatApp = () => {
   const dispatch = useDispatch();
   const isChecking = useSelector(({ auth }) => auth.isChecking);
+  const isOnline = useSelector(({ app }) => app.isOnline);
+
   useEffect(() => {
-    dispatch(listenToAuthChanges());
+    const unsubFromAuth = dispatch(listenToAuthChanges());
+    const unSubFromConnection = dispatch(listentToConnection());
+    return () => {
+      unsubFromAuth();
+      unSubFromConnection();
+    };
   }, [dispatch]);
+
+  if (!isOnline) {
+    return (
+      <LoadingView message="Application has been disconnected from internet. please reconnect" />
+    );
+  }
   if (isChecking) {
     return <LoadingView />;
   }
